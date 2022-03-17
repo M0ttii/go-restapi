@@ -29,7 +29,6 @@ func getVideo(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fmt.Println("dfgdf")
 
 	//Router
 	r := mux.NewRouter()
@@ -43,12 +42,13 @@ func main() {
 		SqlDB: sqlObj,
 	}
 
-	createStmt := "CREATE TABLE IF NOT EXISTS videos (video_id INT PRIMARY KEY, name VARCHAR NOT NULL, uploaded VARCHAR, show BOOLEAN NOT NULL);"
+	createStmt := "CREATE TABLE IF NOT EXISTS videos (name VARCHAR NOT NULL, uploaded VARCHAR, show BOOLEAN NOT NULL);"
 	_, err = data.SqlDB.Exec(createStmt)
 	if err != nil {
 		log.Panic(err)
 	}
-	data.CreateVideo("TestVideo", "1.1.1")
+	//data.CreateSQLVideo("TestVideo", "1.1.1")
+	data.GetSQLVideo(2)
 
 	//Endpoints
 	//r.HandleFunc("/api/videos", getVideos).Methods("GET")
