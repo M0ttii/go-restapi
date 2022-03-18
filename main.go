@@ -7,15 +7,11 @@ import (
 	"log"
 	"net/http"
 
+	//"go-restapi/structs"
+
 	"github.com/gorilla/mux"
 	_ "github.com/mattn/go-sqlite3"
 )
-
-type Video struct {
-	Name     string `json:"name"`
-	Uploaded string `json:"uploaded"`
-	Show     bool   `json:"show"`
-}
 
 /*func uploadVideo(w http.ResponseWriter, r *http.Request) {
 	//Video Uploading
@@ -48,7 +44,8 @@ func main() {
 		log.Panic(err)
 	}
 	//data.CreateSQLVideo("TestVideo", "1.1.1")
-	data.GetSQLVideo(2)
+	video := data.GetSQLVideo(1)
+	fmt.Println(video.GetName())
 
 	//Endpoints
 	//r.HandleFunc("/api/videos", getVideos).Methods("GET")
